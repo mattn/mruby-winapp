@@ -4,6 +4,10 @@ MRuby::Gem::Specification.new('mruby-winapp') do |spec|
 
   # NOTE: This mrbgem makes windows binary. It don't show command prompt.
   if ENV['OS'] == 'Windows_NT'
-    spec.linker.flags << '-mwindows'
+    if spec.cc.command =~ /gcc/
+      spec.linker.flags << '-mwindows'
+    elsif spec.cc.command =~ /cl(\.exe)?$/
+      spec.linker.flags << '-mwindows'
+    end
   end
 end
