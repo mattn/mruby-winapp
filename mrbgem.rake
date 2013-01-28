@@ -7,7 +7,7 @@ MRuby::Gem::Specification.new('mruby-winapp') do |spec|
     if spec.cc.command =~ /gcc/
       spec.linker.flags << '-mwindows'
     elsif spec.cc.command =~ /cl(\.exe)?$/
-      spec.linker.flags << '-mwindows'
+      spec.linker.flags << '/SUBSYSTEM:WINDOWS'
     end
   end
 end
